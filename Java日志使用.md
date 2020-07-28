@@ -25,6 +25,7 @@ Log4j升级版，不兼容Log4j
 ### 2.1.6Logback  
 Log4j的原生框架，出于同一人之手，但更多的有点、特性和更强的性能，代替Log4j成为主流。
 
+![各日志框架关系图](./image/logger/日志框架关系图.jpg "关系图")
 
 选择原则：
 没有最好，只有合适不合适。
@@ -112,6 +113,7 @@ if(log.isDebugEnabled()){
 五、参考
 =  
 [1] https://www.jianshu.com/p/546e9aace657  
+[2] https://blog.csdn.net/Taobaojishu/article/details/107479049
 
 
 
