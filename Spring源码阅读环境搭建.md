@@ -44,38 +44,48 @@ maven { url "https://repo.spring.io/plugins-release" }
 3. idea打开项目，自动构建项目  
 =
 
+按照参考网站[1]上的做法，在打开idea进行自动构建之前，在cmd窗口进行gradle命令操作（2020版idea不执行也可以，一样的效果）  
+`gradlew.bat`  
+
+可能会超时导致下载失败，多试几次就好了  
+
+这时也会由于网速出现各种错误，记录一个坑：由于下载的gradle文件有缺失（网络原因导致），执行命令会得到无法解压的报错信息unzip。。。。。。  
+（解决办法：按照提示，找到对应文件夹，删除重新下载）  
+
+
+
+提前设置了idea的编码格式为utf-8
+
+配置本地安装的gradle
+操作：file-setting-搜索gradle
+在如下的界面进行设置，设置效果如图所示：  
+![idea集成gradle1](./image/gradle/idea集成gradle0.png "idea集成gradle1")
+![idea集成gradle2](./image/gradle/idea集成gradle.png "idea集成gradle2")（实际没有怎么干，选用了默认的选项，即依据配置文件gradle-wrapper中指定的gradle操作进行）
+
+
+由于idea在gradle的作用下去下载各种jar包，但是由于网速等原因往往会失败，报各种各样的错。  idea打开项目开始构建项目，然后就是漫长的等待过程。。。。。。真的非常漫长（时间长，错误多）等待构建过程中，由于网络的原因会报各种各样的错误，重新构建就完事了，错误实在是千奇百怪，记不过来。（不断地尝试重新构建，要坚信源码是没有问题的，有问题的是你的网络）   
+
+此外，  
 打开项目可能出现的问题：
 gradle代码报错  
 解决办法：  
 ![buildgradle文件报错1](./image/gradle/buildgradle文件报错解决1.png "buildgradle文件报错")
 ![buildgradle文件报错2](./image/gradle/buildgradle文件报错解决2.png "buildgradle文件报错")
 
-按照参考网站[1]上的做法，在打开idea进行自动构建之前，在cmd窗口进行gradle命令操作（2020版idea不执行也可以，一样的效果）  
-`gradlew.bat`  
-
-这时也会由于网速出现各种错误，记录一个坑：由于下载的gradle文件有缺失（网络原因导致），执行命令会得到无法解压的报错信息unzip。。。。。。  
-（解决办法：按照提示，找到对应文件夹，删除重新下载）  
-
-由于idea在gradle的作用下去下载各种jar包，但是由于网速等原因往往会失败，报各种各样的错。  
-
-配置本地安装的gradle
-操作：file-setting-搜索gradle
-在如下的界面进行设置，设置效果如图所示：  
-![idea集成gradle1](./image/gradle/idea集成gradle0.png "idea集成gradle1")
-![idea集成gradle2](./image/gradle/idea集成gradle.png "idea集成gradle2")
-
-idea打开项目开始构建项目，然后就是漫长的等待过程。。。。。。真的非常漫长（时间长，错误多）  
-等待构建过程中，由于网络的原因会报各种各样的错误，重新构建就完事了，错误实在是千奇百怪，记不过来。（不断地尝试重新构建，要坚信源码是没有问题的，有问题的是你的网络）
 
 项目源码出现了如图所示的蓝点，说明项目构建完成。  
 ![完成效果](./image/gradle/完成效果.png "完成效果")
 
 spring源码构建过程就已经劝退了。。。。。。
 
+在家里的网络顺畅的情况下，终于顺利走完这一步了（源代码用的是fork的代码）
+
 4.编译源码  
 =
 上述过程只是完成了项目的构建，还需要进一步编译，才算是真正完成spring源码的编译。  
 
+
+依据import-into-idea.md说的，需要先完成编译spring-oxm下的compileTestjava  
 
 
 ```
