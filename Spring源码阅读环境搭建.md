@@ -10,7 +10,7 @@ https://blog.csdn.net/yanzi1225627/article/details/52024632
 
 2. 获取Spring源码
 =  
-github找到项目源码地址（网上说github地址比较慢，其实也还行，不是那么慢）  
+github找到项目源码地址（网上说github地址比较慢，其实也还行，不是那么慢，好吧，我错了，有的时候直接从github上拉源码真的绝望，还是用gitee上的镜像地址吧）  
 `git@github.com:spring-projects/spring-framework.git`  
 
 git clone项目源码
@@ -21,8 +21,8 @@ git clone项目源码
 buildscript {
 	repositories {
 		maven { url "https://repo.spring.io/plugins-release" }
-        maven { url' http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url' http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url' https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url' https://maven.aliyun.com/nexus/content/repositories/jcenter'}
 	}
 }
 ```  
@@ -31,8 +31,8 @@ buildscript {
 //新增以下2个阿里云镜像
 maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
 maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
-maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
-maven { url "http://af.hikvision.com.cn:80/artifactory/maven-down" }
+maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+maven { url "https://其他的镜像地址" }
  //这是原来就在的
  mavenCentral()
 maven { url "https://repo.spring.io/libs-spring-framework-build" }
@@ -65,13 +65,6 @@ maven { url "https://repo.spring.io/plugins-release" }
 
 由于idea在gradle的作用下去下载各种jar包，但是由于网速等原因往往会失败，报各种各样的错。  idea打开项目开始构建项目，然后就是漫长的等待过程。。。。。。真的非常漫长（时间长，错误多）等待构建过程中，由于网络的原因会报各种各样的错误，重新构建就完事了，错误实在是千奇百怪，记不过来。（不断地尝试重新构建，要坚信源码是没有问题的，有问题的是你的网络）   
 
-此外，  
-打开项目可能出现的问题：
-gradle代码报错  
-解决办法：  
-![buildgradle文件报错1](./image/gradle/buildgradle文件报错解决1.png "buildgradle文件报错")
-![buildgradle文件报错2](./image/gradle/buildgradle文件报错解决2.png "buildgradle文件报错")
-
 
 项目源码出现了如图所示的蓝点，说明项目构建完成。  
 ![完成效果](./image/gradle/完成效果.png "完成效果")
@@ -85,19 +78,42 @@ spring源码构建过程就已经劝退了。。。。。。
 上述过程只是完成了项目的构建，还需要进一步编译，才算是真正完成spring源码的编译。  
 
 
-依据import-into-idea.md说的，需要先完成编译spring-oxm下的compileTestjava  
+依据import-into-idea.md说的，
+
+打开项目可能出现的问题（原因jdk没有指定，或者版本不对，我遇到的问题是由于版本过低，导致缺乏对应的包，编译失败）：
+gradle代码报错  
+解决办法：  
+![buildgradle文件报错1](./image/gradle/buildgradle文件报错解决1.png "buildgradle文件报错")
+![buildgradle文件报错2](./image/gradle/buildgradle文件报错解决2.png "buildgradle文件报错")
 
 
-```
-还没到这一步，我哭了
+需要先完成编译spring-oxm下的compileTestjava  
+
+（第一次到这里的时候，各种报错，千奇百怪，第二次，可能因为需要下载的东西都有了，一次编译通过，但是输出控制台中有乱码warning）（目前没找到解决办法，似乎不影响，就继续往下走了）  
+![控制台乱码](image\gradle\控制台乱码解决办法.png "控制台乱码")
+
 由于官方为了避免冲突，排除了两个jar：  
 spring-cglib-repack.jar  
 spring-objenesis-repack.jar  
 
 解决办法：  
-idea直接利用gradle插件，双击对应jar
-```  
+idea直接利用gradle插件，双击对应jar    
+![预编译](image\gradle\预编译.png "预编译")  
 
+排除aspects模块，设置编译jdk版，进行项目编译  
+![编译](image\gradle\编译spring项目.png "编译")  
+
+![排除aspect](image\gradle\右键-选择unload.png "排除aspect")   
+
+![排除aspect1](image\gradle\右键-ignore.png "排除aspect1")   
+
+剩下的就是听天由命，等待了。。。。。。
+
+io.rsocket.RSocketFactory.ClientRSocketFactory 错误（估计jdk版本还是不够高）
+
+祝我自己和大家以后编译一切顺利！  
+祝我自己和大家以后编译一切顺利！  
+祝我自己和大家以后编译一切顺利！  
 
 [1] https://blog.csdn.net/smart_an/article/details/107199151
 [2] https://blog.csdn.net/duli3554197/article/details/105799853/
