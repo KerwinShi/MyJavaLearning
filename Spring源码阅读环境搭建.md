@@ -138,6 +138,7 @@ io.rsocket.RSocketFactory.ClientRSocketFactory 错误，似乎是下载的io.rso
 
 6.测试模块搭建
 =  
+测试主要是为了看看容器加载bean的时候是否正常。前面没报错，基本不会有问题。这个随意发挥吧，好多人的博客都有说明，建议就参考参考\[1\]中的内容。中间可能在添加注释的时候需要用到idea的自动添加依赖以及import相关类的功能，问题不大。（要是控制台输出中文乱码，参考我的`IDEA使用.md`中的做法即可）
 
 
 7.经验教训
@@ -151,5 +152,6 @@ io.rsocket.RSocketFactory.ClientRSocketFactory 错误，似乎是下载的io.rso
 祝我自己和大家以后编译一切顺利！  
 祝我自己和大家以后编译一切顺利！  
 
-[1] https://blog.csdn.net/smart_an/article/details/107199151
+参考：  
+[1] https://blog.csdn.net/smart_an/article/details/107199151  
 [2] https://blog.csdn.net/duli3554197/article/details/105799853/
