@@ -1,6 +1,6 @@
 为方便后续阅读Spring源码，利用idea完成源码阅读环境的搭建。特此记录搭建过程，方便后续回忆搭建过程。
 
-1. Gradel安装  
+1. Gradel安装（这步版本无所谓）  
 =  
 由于spring是利用Gradle搭建的，因此需要先安装Gradle（最好安装与编译需要的版本一直，编译需要的版本在idea打开源码，或者源文件根目录下cmd 执行`gradlew.bat`的时候自动下载）。
 
@@ -8,7 +8,7 @@
 cmd `gradle -g D:/Cache/.gradle build build`(测试通过)
 https://blog.csdn.net/yanzi1225627/article/details/52024632
 
-2. 获取Spring源码
+2. 获取Spring源码（首先尝试最新版源码master）
 =  
 github找到项目源码地址（网上说github地址比较慢，其实也还行，不是那么慢，好吧，我错了，有的时候直接从github上拉源码真的绝望，还是用gitee上的镜像地址吧）  
 `git@github.com:spring-projects/spring-framework.git`  
@@ -80,7 +80,7 @@ spring源码构建过程就已经劝退了。。。。。。
 
 依据import-into-idea.md说的，
 
-打开项目可能出现的问题（原因jdk没有指定，或者版本不对，我遇到的问题是由于版本过低，导致缺乏对应的包，编译失败）：
+打开项目可能出现的问题（原因jdk没有指定，或者版本不对，我遇到的问题是由于版本过低（spring源码为master最新版，jdk为jdk1.8.0_121），导致缺乏对应的包，编译失败）：
 gradle代码报错  
 解决办法：  
 ![buildgradle文件报错1](./image/gradle/buildgradle文件报错解决1.png "buildgradle文件报错")
@@ -107,9 +107,12 @@ idea直接利用gradle插件，双击对应jar
 
 ![排除aspect1](image\gradle\右键-ignore.png "排除aspect1")   
 
-剩下的就是听天由命，等待了。。。。。。
+剩下的就是听天由命，等待了。。。。。。  
 
-io.rsocket.RSocketFactory.ClientRSocketFactory 错误（估计jdk版本还是不够高）
+又fxxk失败了，我哭了，你呢？？？
+
+这会问题出在message模块的编译过程中。。。  
+io.rsocket.RSocketFactory.ClientRSocketFactory 错误，似乎是下载的io.rsocket包有问题，maven中央仓库没有找到对应版本的，换了一个低版本的，原来出错的地方不出错了（io.rsocket.RSocketFactory.ClientRSocketFactory找不到），但是有其他地方出错了（RSocketClient找不到了）
 
 祝我自己和大家以后编译一切顺利！  
 祝我自己和大家以后编译一切顺利！  
