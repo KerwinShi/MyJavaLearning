@@ -209,16 +209,16 @@ public static void main(String args){
 ```  
 使用效果：
 
-![美图](./image/markdown/beauty.jpg)
+![美图](../image/markdown/beauty.jpg)
 
-![美图带说明的那种](./image/markdown/beauty.jpg "美图说明")  
+![美图带说明的那种](../image/markdown/beauty.jpg "美图说明")  
 
 也可以像使用链接一样，用更高级的方法来实现。
 
 利用`<img>`可以实现对图片大小的控制
 `<img src="./image/markdown/beauty.jpg" width="50%">`
 使用效果如下：  
-<img src="./image/markdown/beauty.jpg" width="50%">
+<img src="../image/markdown/beauty.jpg" width="50%">
 
 8.表格  
 =

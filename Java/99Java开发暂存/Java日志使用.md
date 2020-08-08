@@ -24,12 +24,12 @@ Java自带的日志工具类，基本没人在使用了已经。
 开源日志框架，最为广泛的应用框架。（停止维护，切换至log4j2）  
 ### 2.1.5Log4j2  
 Log4j升级版，不兼容Log4j，Log4j2利用Java5中的并发特性支持，尽可能地执行最低层次的加锁。解决了在log4j 1.x中存留的死锁的问题。Log4j 2是基于LMAX Disruptor库的。在多线程的场景下，和已有的日志框架相比，异步logger拥有10倍左右的效率提升。  
-![log4j2体系结构](./image/logger/log4j2体系结构.jpg "log4j2")
+![log4j2体系结构](../../image/logger/log4j2体系结构.jpg "log4j2")
 ### 2.1.6Logback  
 Log4j的原生框架，出于同一人之手，但更多的有点、特性和更强的性能，代替Log4j成为主流。  
 分为三个模块：logback-core、logback-classic和logback-access。其中core是基础，classic是log4j的改良版本，access与servlet容器集成通过提供http来访问日志的功能。（优点还很多，具体以后遇到补充）
 
-![各日志框架关系图](./image/logger/日志框架关系图.jpg "关系图")
+![各日志框架关系图](../../image/logger/日志框架关系图.jpg "关系图")
 
 选择原则：
 没有最好，只有合适不合适。
