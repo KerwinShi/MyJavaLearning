@@ -46,7 +46,7 @@ ApplicationContext实现了MessageSource接口，可以当做MessageSource使用
 2.1MessageSource的可用实现
 -  
 首先看一下各个实现之间的关系：  
-![MessageSource体系结构](./image/spring/messagesource/MessageSource类层次结构.png "MessageSource")
+![MessageSource体系结构](../../../image/spring/messagesource/MessageSource类层次结构.png "MessageSource")
 
 * StaticMessageSource  
 MessageSource的简单实现，用于通过编程的方式添加信息条目，用于测试，不宜使用于生产环境。  

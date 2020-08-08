@@ -5,26 +5,26 @@
 设置全局的编码格式为：utf-8
 file - setting - file encodings  
 设置效果如下：  
-![第一处设置](./image/idea/setting1.png "第一处设置")
+![第一处设置](../../../image/idea/setting1.png "第一处设置")
 
 设置编译编码格式 
 file - setting - compile - Java compiler  
 设置效果如下：  
-![第二处设置](./image/idea/setting2.png "第二处设置")  
+![第二处设置](../../../image/idea/setting2.png "第二处设置")  
 
 设置tomcat或其他类型项目编译编码格式
-![第三处设置](./image/idea/setting3.png "第三处设置")   
+![第三处设置](../../../image/idea/setting3.png "第三处设置")   
 
 设置idea启动相关编码格式  `-Dfile.encoding=UTF-8`
-![第四处设置](./image/idea/setting5.png "第四处设置")   
+![第四处设置](../../../image/idea/setting5.png "第四处设置")   
 
 全局搜索idea64.exe.vmoptions和idea.exe.vmoptions，添加编码格式如上
-![第五处设置](./image/idea/setting6.png "第五处设置") 
+![第五处设置](../../../image/idea/setting6.png "第五处设置") 
 
 2. 换行符设置  
 file - setting - code style 
  设置效果如下：  
-![换行符设置](./image/idea/setting4.png "换行符设置") 
+![换行符设置](../../../image/idea/setting4.png "换行符设置") 
 
 
 

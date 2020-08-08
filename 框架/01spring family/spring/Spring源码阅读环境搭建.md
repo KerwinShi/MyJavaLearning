@@ -66,15 +66,15 @@ maven { url "https://repo.spring.io/plugins-release" }
 配置本地安装的gradle
 操作：file-setting-搜索gradle
 在如下的界面进行设置，设置效果如图所示：  
-![idea集成gradle1](./image/gradle/idea集成gradle0.png "idea集成gradle1")
-![idea集成gradle2](./image/gradle/idea集成gradle.png "idea集成gradle2")（实际没有怎么干，选用了默认的选项，即依据配置文件gradle-wrapper中指定的gradle操作进行）
+![idea集成gradle1](../../../image/gradle/idea集成gradle0.png "idea集成gradle1")
+![idea集成gradle2](../../../image/gradle/idea集成gradle.png "idea集成gradle2")（实际没有怎么干，选用了默认的选项，即依据配置文件gradle-wrapper中指定的gradle操作进行）
 
 
 由于idea在gradle的作用下去下载各种jar包，但是由于网速等原因往往会失败，报各种各样的错。  idea打开项目开始构建项目，然后就是漫长的等待过程。。。。。。真的非常漫长（时间长，错误多）等待构建过程中，由于网络的原因会报各种各样的错误，重新构建就完事了，错误实在是千奇百怪，记不过来。（不断地尝试重新构建，要坚信源码是没有问题的，有问题的是你的网络）   
 
 
 项目源码出现了如图所示的蓝点，说明项目构建完成。  
-![完成效果](./image/gradle/完成效果.png "完成效果")
+![完成效果](../../../image/gradle/完成效果.png "完成效果")
 
 spring源码构建过程就已经劝退了。。。。。。
 
@@ -90,14 +90,14 @@ spring源码构建过程就已经劝退了。。。。。。
 打开项目可能出现的问题（原因jdk没有指定，或者版本不对，我遇到的问题是由于版本过低（spring源码为master最新版，jdk为jdk1.8.0_121），导致缺乏对应的包，编译失败）：
 gradle代码报错  
 解决办法：  
-![buildgradle文件报错1](./image/gradle/buildgradle文件报错解决1.png "buildgradle文件报错")
-![buildgradle文件报错2](./image/gradle/buildgradle文件报错解决2.png "buildgradle文件报错")
+![buildgradle文件报错1](../../../image/gradle/buildgradle文件报错解决1.png "buildgradle文件报错")
+![buildgradle文件报错2](../../../image/gradle/buildgradle文件报错解决2.png "buildgradle文件报错")
 
 
 需要先完成编译spring-oxm下的compileTestjava  
 
 （第一次到这里的时候，各种报错，千奇百怪，第二次，可能因为需要下载的东西都有了，一次编译通过，但是输出控制台中有乱码warning，参见`IDEA使用.md`）（目前没找到解决办法，似乎不影响，就继续往下走了）  
-![控制台乱码（部分）](image\gradle\控制台乱码解决办法.png "控制台乱码（部分）")
+![控制台乱码（部分）](../../../image/gradle/控制台乱码解决办法.png "控制台乱码（部分）")
 
 由于官方为了避免冲突，排除了两个jar：  
 spring-cglib-repack.jar  
@@ -105,14 +105,14 @@ spring-objenesis-repack.jar
 
 解决办法：  
 idea直接利用gradle插件，双击对应jar    
-![预编译](image\gradle\预编译.png "预编译")  
+![预编译](../../../image\gradle\预编译.png "预编译")  
 
 排除aspects模块，设置编译jdk版，进行项目编译  
-![编译](image\gradle\编译spring项目.png "编译")  
+![编译](../../../image\gradle\编译spring项目.png "编译")  
 
-![排除aspect](image\gradle\右键-选择unload.png "排除aspect")   
+![排除aspect](../../../image\gradle\右键-选择unload.png "排除aspect")   
 
-![排除aspect1](image\gradle\右键-ignore.png "排除aspect1")   
+![排除aspect1](../../../image\gradle\右键-ignore.png "排除aspect1")   
 
 剩下的就是听天由命，等待了。。。。。。  
 
