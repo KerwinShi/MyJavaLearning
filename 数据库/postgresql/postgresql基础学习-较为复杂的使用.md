@@ -47,7 +47,7 @@ ALTER TABLE table_name DROP CONSTRAINT some_name;
 
 
 
-
+https://www.runoob.com/postgresql/postgresql-join.html
 
 
 
