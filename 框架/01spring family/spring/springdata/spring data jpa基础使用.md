@@ -1,3 +1,10 @@
+几个概念的区别：
+Hibernate是一个开源的对象关系映射框架，对JDBC进行了非常轻量级的对象封装，使得程序员可以随心所欲的使用对象编程思维来操纵数据库。属于全自动的ORM框架，着力点在于POJO和数据库表之间的映射，完成映射即可自动生成和执行sql。  
+Mybatis：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。属于半自动的ORM框架，着力点在于POJO和SQL之间的映射，自己编写sql语句，然后通过配置文件将所需的参数和返回的字段映射到POJO。  
+Spring Data JPA：Spring Data是一个通过命名规范简化数据库访问，并支持云服务的开源框架。其主要目标是使得对数据的访问变得方便快捷，并支持map-reduce框架和云计算数据服务。  
+
+Hibernate的开发难度要大于Mybatis、Spring Data。主要是由于Hibernate封装了完整的对象关系映射机制,以至于内部的实现比较复杂、庞大，学习周期较长。Mybatis 主要依赖于SQL的编写与ResultMap的映射。Spring Data易上手，通过命名规范、注解查询简化查询操作。
+
 1.概念
 =
 spring data jpa是spring data模块的一个模块，依赖hibernate jpa实现，是一种orm技术（Object Relational Mapping）  
@@ -593,3 +600,4 @@ private Set<LinkMan> linkManSet = new HashSet<>();
 参考：
 [1] https://www.cnblogs.com/chenglc/p/11226693.html  
 [2] https://blog.csdn.net/Sakuraaaaaaa/article/details/107809618
+[3] https://www.cnblogs.com/hr-cmbc/p/10915043.html
