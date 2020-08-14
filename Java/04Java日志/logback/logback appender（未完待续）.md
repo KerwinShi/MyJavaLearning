@@ -112,3 +112,6 @@ file属性
 appenbd属性  
 encoder属性  
 prudent属性：FixedWindowRollingPolicy不支持该属性，RollingFileAppender在严格模式下要与TimeBasedRollingPolicy结合使用，不允许同时有一个JVM操作，其他JVM压缩，不允许修改file属性  
+
+上述的appender都是输出日志到本地资源的，，日志也可以输出到远端。
+20200814暂时阅读到此，后续继续补充。。。
