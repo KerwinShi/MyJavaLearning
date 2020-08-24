@@ -1,0 +1,10 @@
+JpaRepository接口是一个分水岭，上面的接口都是为了兼容非关系型数据库的抽象封装，JpaRepository开始是对关系型数据库的抽象封装。  
+
+JpaRepository同时继承了SimpleJpaRepository接口和QueryByExampleExecutor接口  
+JpaRepository包含如下的方法：  
+
+ 快速使用：  
+ 我们需要使用的Repository继承JpaRepository接口即可。  
+
+
+JpaRepository接口的实现类SimpleJpaRepository，是JPA关联数据库所有的Repository的接口实现类。
