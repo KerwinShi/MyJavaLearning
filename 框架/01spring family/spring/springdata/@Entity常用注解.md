@@ -1,3 +1,6 @@
+![javax.persistence](../../../../image/spring/springdata/jpa/javaxpersistence中类关系图.png "javax.persistence")   
+![jpa层次结构](../../../../image/spring/springdata/jpa/javaxpersistence中类关系图.png "jpa层次结构")   
+
 基础注解：
     @Entity：对象会成为被JPA管理的实体，映射到指定的数据库表  
 

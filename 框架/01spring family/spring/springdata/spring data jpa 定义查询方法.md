@@ -34,16 +34,46 @@ QueryExecutorMethodInterceptor实现MethodInterceptor接口，在查询方法真
 @Query  
 ![代码](../../../../image/spring/springdata/jpa/@query源码.png "代码") 
 
-//TODO待补充
+```java  
+//声明一个注解在Repository的查询方法上
+@Query("select u from User u where u.emailAddress = ?1")
+User findByEmailAddress(String emailAddress);
 
+//需要注意的是，like模糊查询的时候需要自己手动去加%
 
+//也可以直接使用原生的sql语句
+@Query(value = "SELECT * FROM USERS WHERE EMAILaDRESS = ?1", nativeQuery = true )
+User findByEmailAddress(String emailAddress);
+```
 
+@Query排序  
+使用原生语句的时候使用Sort是不起效的，直接进行字符串拼接，拼接成order by XXXX才可以。  
+JPQL下排序的时候直接用PageRequest或者Sort都可以
 
+@Query分页  
+直接用Page对象接收接口，参数直接用Pageable的实现类
+```java
+@Query("XXXXX")
+Page<DeviceInfo> findAll(Specification<DeviceInfo> spec, Pageable pageable);
+```  
+对于原生sql的查询不友善  
 
+上述的查询过程中，参数是通过顺序绑定的，用起来比较容易出错，使用@Param可以解决。
+```java
+@Query("select u from User u where u.firstname = :firstname or u.lastname = :lastname")
+User findByLastNameOrFirstName(@Param("lastname") String lastname, @Param("firstname") String firstname);
+```
 
+@Query支持SpEL（Spring Express Language）来接收变量，适用于自定义Repository接口。（可以秀操作）（了解）
 
+@Modifying修改查询（了解）  
+用于刷新hibernate的以及缓存，不然同一个接口中更新对象，再查询，查询结果是更新之前的。  
 
+@QueryHints：有支持，但是少有人用（了解）  
 
+@Procedure储存过程的查询方法（了解）
+
+@NamedQueries预定义查询（了解，少用）
 
 
 
