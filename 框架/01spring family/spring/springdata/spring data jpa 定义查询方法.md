@@ -24,9 +24,26 @@ QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND)`
 属性表达式：  
 把关键字去除以后，用于解析实体的属性，从而生成查询方法的部分。  
 
+实现机制：  
+QueryExecutorMethodInterceptor实现MethodInterceptor接口，在查询方法真正地实现调用前，先执行invoke（关键在于如何解析，怎么invoke不重要）
+![机制](../../../../image/spring/springdata/jpa/解析方法名称进行查询实现机制逻辑关系图.png "机制") 
+![代码](../../../../image/spring/springdata/jpa/查询方法解析策略.png "代码") 
 
 2.通过注解  
 -  
+@Query  
+![代码](../../../../image/spring/springdata/jpa/@query源码.png "代码") 
+
+//TODO待补充
+
+
+
+
+
+
+
+
+
 
 
 
@@ -56,4 +73,50 @@ QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND)`
 
 查询结果的不同形式：  
     流式查询结果
-    使用Java 8 Stream\<T\> 作为返回类型来逐步处理查询方法的结果
+    使用Java 8 Stream\<T\> 作为返回类型来逐步处理查询方法的结果（try catch关闭流）
+    ```java
+    @Query("selecet u from User u")
+    Stream<User> findAllByCustomQueryAndStream();
+    Stream<User> findAllByFirstnameNotNull();
+    @Query("selecet u from User u")
+    Stream<User> streamAllPaged(Pageable pagelable);
+    ```
+    异步查询结果  
+    使用Spring的异步方法执行功能异步的存储库查询。（定时任务，在调用的时候立即返回查询结果，而实际的查询发生在已经提交的Spring TaskExecutor中）
+    ```
+    Future<User>  findByLastName(String lastname);
+    CompletableFuture<User>  findByLastName(String lastname);
+    ListenableFuture<User>  findByLastName(String lastname);
+    ```  
+    Projections对查询结果的扩展  
+    针对我们不需要全部字段，只需指定的字段或者返回复合型的字段，对专用返回类进行建模，将部分字段显示为视图对象。
+    ```
+    //查询一张表的部分字段  
+    //1.仅需要返回部分字段时，需要先声明一个借口，包含要返回的属性
+    interface NamesOnly{
+        String getFirstname();
+        String getLastname();
+    }
+    //2.Repository中用该对象接收结果
+    interface PersonRepository extends Repository<Person, UUID>{
+        Collection<NamesOnly> findByLastname(String lastname);
+    }
+
+    //查询关联的子对象
+    interface PersonSummary{
+        String getFirstname();
+        String getLastname();
+        AddressSummary getAddress();
+        interface AddressSummary{
+            String getAddress();
+        }
+    }
+
+    //拼接返回
+    interface NamesOnly{
+        @Value("#{target.firstname + ' ' + target.lastname}")
+        String getFullname();
+    }
+
+    还有很多很多用法...
+    ```  
