@@ -41,15 +41,40 @@
 
 关联关系注解  
 @JoinColumn  
+配合OneToOne OneToMany ManyToOne使用，单独使用没有意义
 
 @OneToOne  
+使用：  
+```java
+//Department中
+@OneToOne
+//employee_id指的是Department里面的字段
+//referencedColumnName="id"指的是Employee表里面的字段
+@JointColumn(name="employee_id",referernceColumnName="id")
+private Employee employeeAttribute;
+
+//双向关联的话Employee中
+@OneToOne(mapppedBy = employeeAttribute)
+private Department department;
+//与Department中一样的额做法当然也是可以的
+```
 
 @OneToMany  
-
 @ManyToOne  
+这两个可以相对存在，也可以单独存在  
+```java
+@ManyToOne(targetEntity=DeviceType.class)
+@JoinColumn(name="deviceType",referencedColumnName="typeId")
+private DeviceType deviceType;
 
-@ManyToMany  
-
-@JoinTable  
+//配置一对多关系
+@OneToMany(mappedBy="deviceType")
+private Set<DeviceInfo> deviceInfo = new HashSet<DeviceInfo>(0);
+```  
 
 @OrderBy  
+@OneToMany一起使用  
+
+@JoinTable 
+@ManyToMany一起使用  
+ 
