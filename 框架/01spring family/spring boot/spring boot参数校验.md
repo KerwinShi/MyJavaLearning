@@ -236,8 +236,11 @@ public void demo3(){
 }
 ```  
 * 分组校验  
+如果指定了校验组，则该属性将不再属于默认的校验组Default.class  
+
 ```java
 //1.定义分组接口
+//其实校验组的接口可以不用专门定义，针对特定业务接口的校验分组，可以直接指定特定的业务接口即可，这样校验分组就同业务接口做到了完整的统一。
 public interface GroupA {
 }
 public interface GroupB {
@@ -326,7 +329,11 @@ public void demo7(){
         System.out.println(item);
     }
 }
-```  
+```    
+再项目的实践过程中，发现要是进行了参数的分组校验，默认分组里面就不会对这些参数进行校验了，需要自定义一个默认的分组。  
+同校验组序列相比，仅仅是将@GroupSequence注解直接打在了类上面。  
+
+
 
 上述的方法基本可以解决很多的验证问题了，但是对于一些比较特殊的需求，还可以使用自定义验证器  
 ```java
@@ -400,6 +407,12 @@ public void demo4(){
 ```  
 
 常用注解及含义  
+注解主要分为三类：  
+* Bean Validation内置的校验注解  
+* Hibernate Validator拓展的校验注解  
+* 框架自带的校验注解
+
+Bean Validator内置的注解：  
 | 注解 | 含义 |
 | :----: | :----: | 
 |@Null   |被注释的元素必须为 null|
@@ -415,11 +428,27 @@ public void demo4(){
 |@Past   |被注释的元素必须是一个过去的日期     |
 |@Future    | 被注释的元素必须是一个将来的日期     |
 |@Pattern(regex=,flag=)  |被注释的元素必须符合指定的正则表达式     |
-Hibernate Validator 附加的 constraint     
+
+Hibernate Validator 附加的 constraint：       
 | 注解 | 含义 |
 | :----: | :----: | 
 |@NotBlank(message =)   |验证字符串非null，且长度必须大于0     |
 |@Email | 被注释的元素必须是电子邮箱地址     |
 |@Length(min=,max=)  |被注释的字符串的大小必须在指定的范围内     |
 |@NotEmpty  | 被注释的字符串的必须非空     |
-|@Range(min=,max=,message=)  |被注释的元素必须在合适的范围内|
+|@Range(min=,max=,message=)  |被注释的元素必须在合适的范围内|  
+|@NotBlank  |不为null，不为空值，不为全空格。功能强大于@NotEmpty|
+
+Validator框架拓展注解：  
+| 注解 | 含义 |
+| :----: | :----: | 
+|@NotEmptyPattern   |在字符串不为空的情况下，验证是否匹配正则表达式     |
+|@ListStringPattern   |验证集合中的字符串是否满足正则表达式     |
+|@DateValidator   |验证日期格式是否满足正则表达式，Local为ENGLISH     |
+|@DateFormatCheckPattern  |验证日期格式是否满足正则表达式，Local为自己手动指定     |
+
+
+
+参考：
+1.https://www.cnblogs.com/duanxz/p/3894625.html  
+2.https://blog.csdn.net/liuchuanhong1/article/details/52042294
