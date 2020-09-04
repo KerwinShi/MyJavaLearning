@@ -131,4 +131,5 @@ Spring Cloud Config 为分布式系统中的外部化配置提供服务器和客
 
 
 参考：  
-https://zhuanlan.zhihu.com/p/95696180?from_voters_page=true
+https://zhuanlan.zhihu.com/p/95696180?from_voters_page=true  
+https://www.springcloud.cc/spring-cloud-greenwich.html#_spring_cloud_config

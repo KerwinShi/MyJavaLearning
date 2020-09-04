@@ -1,0 +1,1 @@
+Spring Cloud Bus 核心原理其实就是利用消息队列做广播，所以要先有个消息队列，目前官方支持[RabbitMQ](../../../中间件\消息队列\RabbitMQ\RabbitMQ.md)/[kafka](../../../中间件\消息队列\kafka\kafka.md)
