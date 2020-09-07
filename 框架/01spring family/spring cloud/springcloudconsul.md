@@ -6,8 +6,14 @@ HashiCorp 公司推出，用于提供服务发现和服务配置的工具
 
 Spring Cloud Consul 可替代已有的 Spring Cloud Eureka, Spring Cloud Config  
 
-1.替代Eureka  
-与Eureka不一样的是，Consul需要单独安装
+与Eureka可以直接使用不同，Consul需要进行单独的安装。
+
+
+
+
+
+参考：  
+1.https://blog.csdn.net/a312586670/article/details/105337943/
 
 
 
