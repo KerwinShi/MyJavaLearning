@@ -1,5 +1,5 @@
 客户端服务调用服务端接口的方法有两种：结合ribbon与[resttemplate](../spring/resttemplate.md)，openfeign。   
-[访问服务接口](../../../image/spring/springcloud/两种服务端接口调用方式.png)  
+![访问服务接口](../../../image/spring/springcloud/两种服务端接口调用方式.png)  
 
 openfeign主要用来解决一个依赖服务接口会在多处被调用，为了减少开发工作量，针对各个微服务自行封装一些客户端累来包装这些依赖服务的调用。
 

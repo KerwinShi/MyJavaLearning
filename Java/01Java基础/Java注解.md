@@ -27,7 +27,7 @@ public @interface Test {
     RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。  
     RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。  
     RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们。  
-    [@Retention](../../image/java基础/元注解retention.png "@Retention")
+    ![@Retention](../../image/java基础/元注解retention.png "@Retention")
 * @Documented：将注解中的元素包含到 Javadoc 中去。  
 * @Target：指定了注解运用的地方。（限定注解的使用范围）  
     ElementType.ANNOTATION_TYPE 可以给一个注解进行注解  
