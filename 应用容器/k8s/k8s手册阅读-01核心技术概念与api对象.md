@@ -57,9 +57,9 @@ Kubernetes 的存储卷的生命周期和作用范围是一个 Pod，每个 Pod 
 支持多种公有云平台的存储，包括 AWS，Google 和 Azure 云；  
 支持多种分布式存储包括 GlusterFS 和 Ceph；  支持较容易使用的主机本地目录 emptyDir, hostPath 和 NFS；  
 Kubernetes 还支持使用 Persistent Volume Claim 即 PVC 这种逻辑存储。  
-1.3.1持久存储卷（Persistent Volume，PV）  
+1.4.1持久存储卷（Persistent Volume，PV）  
 PV是K8s集群中某个网络存储对应的存储块
-1.3.2持久存储卷声明（Persistent Volume Claim，PVC）
+1.4.2持久存储卷声明（Persistent Volume Claim，PVC）
 使得存储的使用者可以忽略后台的实际存储技术（例如 AWS，Google 或 GlusterFS 和 Ceph），而将有关存储实际技术的配置交给存储管理员通过 Persistent Volume 来配置。
 ![PVC与PV](../../image/k8s/PVC与PV.png)  
 
@@ -70,6 +70,11 @@ PVC 和 Pod 是资源的使用者，根据业务服务的需求变化而变化�
 1.5密钥对象（Secret）
 -  
 Secret 是用来保存和传递密码、密钥、认证凭证这些敏感信息的对象。  
+
+1.6ConfigMap  
+-  
+将配置文件与image文件解耦，（总不能配置修改一次，就制作一次image文件吧）  
+ConfigMap API给我们提供了向容器中注入配置信息的机制，ConfigMap可以被用来保存单个属性，也可以用来保存整个配置文件或者JSON二进制大对象。
 
 1.6用户帐户（User Account）和服务帐户（Service Account）  
 -  
