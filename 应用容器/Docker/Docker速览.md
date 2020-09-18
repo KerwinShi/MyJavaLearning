@@ -147,10 +147,13 @@ docker container ls --all（列出本机所有的容器，包括已经停止运�
 
 5.7发布image文件  
 前提：注册，登录 docker login  
+
 标记本地image  
 格式：docker image tag \[imageName\] \[username\]/\[repository\]:\[tag\]  
 示例：docker image tag koa-demos:0.0.1 ruanyf/koa-demos:0.0.1  
+
 或者  
+
 格式：docker image build -t \[username\]/\[repository\]:\[tag\]  
 示例：
 发布  
@@ -180,4 +183,6 @@ Windows10 下docker的安装实践：
 * 安装软件下载速度非常慢，阿里云容器镜像下载  
 * docker toolbox安装过程中由于未安装git（电脑上已有，所以未勾选避免重复安装），导致Docker Quickstart Terminal不可用，修改快捷方式属性，指向安装的git即可  
 * 其余的问题参见：  
-4.https://www.jianshu.com/p/2aa5b05717c6  
+4.https://www.jianshu.com/p/2aa5b05717c6   
+
+5.https://www.runoob.com/docker/docker-command-manual.html(Docker指令查询)
