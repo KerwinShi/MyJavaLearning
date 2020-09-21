@@ -44,3 +44,15 @@ public className{
 
 3.原理解析  
 =  
+这里会用到两个分析工具（查看线程的状态）：  
+* JDK自带的JCONSOLE  
+* jsatck pid命令  
+
+原理需要进行反编译文件：  
+javap -v filename  
+
+对于方法，标志为ACC_SYNCHRONIZED，对于代码块，标志分别为monitorenter与monitorexit（两个，分别为正常退出与异常退出）
+![方法上的标志](../../image/java并发/synchronized方法上的标识.png)
+![代码块上的标志](../../image/java并发/synchronized代码块上的标识.png)  
+
+java1.6之前，synchronized是重量级锁（霸道总裁，一旦占用，别人就没希望了，只能等我主动放弃），但是1.6之后java虚拟机对其进行了优化，引入了偏向锁，轻量级锁
