@@ -101,12 +101,103 @@ findFirst()：找到第一个元素
 这两的使用上的[区别](https://blog.csdn.net/huanghanqian/article/details/102807972)  
 值得注意的是，这两个方法返回的是一个 Optional<T> 对象，它是一个容器类，能代表一个值存在或不存在  
 
-3.10
+3.10reduce(T, (T, T) -> T)  
+用于组合流中的元素，如求和，求积，求最大值等，其中的第一个参数T表示初始值，后面跟一个lambda表达式，初始值可以没有（但是由于没有初始值，需要考虑结果可能不存在的情况，因此返回的是 Optional 类型）  
+
+3.11count()  
+返回六中元素的个数，结果为long类型  
+
+3.12collect()  
+收集方法,参数是一个收集器Collector接口  
+### 3.12.1收集  
+toList,toSet,toCollection,toMap(转map的时候，key重复会报错，需要提供合并策略，具体的见java8 Collectors.toMap方法重载)  
+### 3.12.2汇总  
+#### 3.12.2.1counting
+计算总和，效果等同于count(),`long l = list.stream().collect(counting());`    
+#### 3.12.2.2summingInt ，summingLong ，summingDouble  
+计算总和，效果等同于数值流的sum(),reduce也可以实现类似操作效果  
+#### 3.12.2.3averagingInt，averagingLong，averagingDouble   
+求平均数，效果等同于数值流的average()  
+#### 3.12.2.4summarizingInt，summarizingLong，summarizingDouble  
+返回结果比较特殊，summarizingInt返回 IntSummaryStatistics 类型，包含了计算出来的平均值，总数，总和，最值    
+### 3.12.3取最值
+maxBy，minBy 两个方法，需要一个 Comparator 接口作为参数  
+```java
+Optional<Person> optional = list.stream().collect(maxBy(comparing(Person::getAge)));
+```
+### 3.12.4joining连接字符串
+其底层实现用的是专门用于字符串连接的 StringBuilder  
+```java
+String s = list.stream().map(Person::getName).collect(joining(","));
+```
+### 3.12.5groupingBy 分组
+groupingBy 用于将数据分组，最终返回一个 Map 类型
+```java
+Map<Integer, List<Person>> map = list.stream().collect(groupingBy(Person::getAge));
+```
+还可以多级分组，
+```java
+Map<Integer, Map<T, List<Person>>> map = list.stream().collect(groupingBy(Person::getAge, groupingBy(...)));
+```
+分组收集数据
+```java
+Map<Integer, Integer> map = list.stream().collect(groupingBy(Person::getAge, summingInt(Person::getAge)));
+```
+### 3.12.6partitioningBy 分区  
+分区是按照 true 和 false 来分的，因此partitioningBy 接受的参数的 lambda 是 T -> boolean
+```java
+Map<Boolean, List<Person>> map = list.stream().collect(partitioningBy(p -> p.getAge() <= 20));
+```
 
 
 
+
+3.13forEach()  
+循环
+
+4.其他操作  
+=  
+4.1数值流与流  
+-  
+由于在流操作过程中，会在没有关注的情况下发生数据类型的装箱与拆箱操作，会降低效率；引入了数值流 IntStream, DoubleStream, LongStream，这种流中的元素都是原始数据类型，分别是 int，double，long  
+```
+//流转换为数值流
+mapToInt(T -> int) : return IntStream
+mapToDouble(T -> double) : return DoubleStream
+mapToLong(T -> long) : return LongStream
+
+//数值流转换为流
+Stream<Integer> stream = intStream.boxed();
+```
+数值流操作方法有：sum()，max()，min()，average() 等...   
+数值范围分为： range（半开区间，小的闭） 和 rangeClosed（闭区间） 
+
+4.2创建流  
+-  
+### 4.2.1值创建流   
+```java
+Stream<String> stream = Stream.of("aaa","bbb",...,"xxx", "yyy", "zzz");
+//Stream.empty() : 生成空流
+```
+### 4.2.1数组创建流  
+```java
+//将数组的部分转换为流
+Arrays.stream(T[ ], int, int)
+```
+### 4.2.3文件创建流  
+```java
+//每个元素是指定文件的其中一行
+Stream<String> stream = Files.lines(Paths.get("data.txt"));
+```
+### 4.2.4函数生成流  
+```java
+//iterate ： 依次对每个新生成的值应用函数
+Stream.iterate(0, n -> n + 2)
+//generate ：接受一个函数，生成一个新的值
+Stream.generate(Math :: random)
+```
 
 
 参考：  
 1.https://www.jianshu.com/p/0bb4daf6c800?from=groupmessage  
-
+2.https://zhangzw.com/posts/20191205.html
