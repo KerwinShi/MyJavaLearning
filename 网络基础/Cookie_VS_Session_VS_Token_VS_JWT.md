@@ -136,11 +136,7 @@ Signature 部分是对前两部分的签名，防止数据篡改。（需要指�
 
 
 
-
-
-
-
-参考：
+参考：  
 1.https://juejin.im/post/6844904034181070861  
 2.https://www.jianshu.com/p/576dbf44b2ae  
 3.http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html
