@@ -30,3 +30,5 @@ Lombok是一款利用注解简化我们开发过程中的一些通用的代码�
 参考：  
 1.https://blog.csdn.net/qq_36761831/article/details/86546970  
 2.https://www.cnblogs.com/ooo0/p/12448096.html  
+3.https://segmentfault.com/a/1190000020864572   
+4.https://cloud.tencent.com/developer/article/1639349
