@@ -30,9 +30,36 @@ MESI(硬件层面上的实现)
 让其他线程感知到有一个线程对变量进行了修改  
 可见性：  
 对共享变量的修改，其他线程马上可以感知到  
+**不能保证原子性 读 写 ++**  
+有序性：  
+>重排序（编译阶段、指令优化阶段）输入程序的代码顺序并不是实际的顺序(为了提高CPU的吞吐量)，对于单线程没有影响（重排的前提是不能影响结果），但是对于多线程有影响  
+对于volatile修饰的变量
+volatile之前的代码不允许调整到他的后面  
+volatile之后的代码不允许调整到他的前面  
+霸道，位置的不变化  
+
+理解volatile的原理与实现机制（锁，轻量级）  
+>HSDIS--反编译--汇编 可以看出来是加了锁lock   
+
+3.使用场景  
+=   
+开关模式（标志位用来控制开关）  
+双重检查锁（单例模式DCL）  
+需要利用顺序性  
 
 
 
+4.volatile  vs  synchronized  
+使用上：  
+>volatile只能修饰变量，synchronized只能修饰方法与语句块  
+原子性：  
+>volatile无法保证，synchronized可以保证  
+可见性：  
+>都可以保证可见性，但是实现原理不一致，volatile加了lock，synchronized加了monitorenter和monitorexit
+有序性：  
+>都可以保证有序性，但是synchronized付出的代价太大，重量级锁，并发退化为串行  
+其他：  
+>synchronized会引起阻塞，volatile不会
 
 
 
