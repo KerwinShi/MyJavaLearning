@@ -13,3 +13,5 @@
 辅助快速定位
 //TODO:内容待补充
 
+>勒布朗（LeBlanc）法则:  
+>Later equals never  ----  稍后等于永不  
