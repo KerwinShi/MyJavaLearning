@@ -14,4 +14,9 @@
 //TODO:内容待补充
 
 >勒布朗（LeBlanc）法则:  
->Later equals never  ----  稍后等于永不  
+>Later equals never  ----  稍后等于永不    
+
+
+常用表情：  
+![](../../image/emoji/amazingAction.jpg)  
+![](../../image/emoji/LiftChestnuts.jpg)   
