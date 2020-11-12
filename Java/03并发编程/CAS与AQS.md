@@ -62,12 +62,40 @@ public class CasDemo{
 
 }
 
-```
+```  
+CAS实现的底层原理：  
 ![cas反编译结果](../../image/java并发/cas实现原理.png)
+ 根据incrementandget()，找到虚拟机的源码（是c++编写的）unsafe，其中中可以找到对应的实现代码，继续找到实现的对应的汇编指令（硬件支持）。  
+ 从而，incrementandget()保证了自增操作的原子性  
+
+JDK的原子整型等原子类AtomicInteger  
+
+CAS存在的问题：ABA（A先被一个线程改为B，然后被另一个线程改回A，第三个线程看不出这个A已经和原来的A不一样了）  
+
+AtomicStampedReference
+为了解决这个问题，在后面加了一个版本，用来区分A与A不一样了（时间戳）。
+
+适用场景：  
+简单的数据计算  
+冲突比较少的场景  
+
 
 2.AQS
 =  
+AbstractQueuedSychronizer  同步发生器   构建Lock（JUC包java.util.concurrent）  
 
+基本思想  
+内置的FIFO同步队列来完成线程争夺资源的管理工作  
+
+CLH同步队列  
+
+来一个线程就去获取state的值，如果是0，没有线程占用，就可以获取到锁  
+如果不为0，说明被其他线程占用了，加入等待队列CLH队列（CLH队列中的线程都是在等待的线程，处于自旋状态（为了减轻切换内核线程的代价），直到线程获取到锁）  
+原理图(../../流程图/同步队列.drawio)  
+
+
+自定义锁  
+![](../../image/emoji/amazingAction.jpg)  
 
 
 
