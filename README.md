@@ -20,6 +20,6 @@
 >Later equals never  ----  稍后等于永不    
 
 
-常用表情：  
-![](../../image/emoji/amazingAction.jpg)  
-![](../../image/emoji/LiftChestnuts.jpg)   
+常用表情连接：  
+`![](image/emoji/amazingAction.jpg)`   
+`![](image/emoji/LiftChestnuts.jpg)`  
