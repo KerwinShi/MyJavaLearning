@@ -182,6 +182,7 @@ private void writeObject0(Object obj, boolean unshared)
         for (;;) {
             // REMIND: skip this check for strings/arrays?
             Class<?> repCl;
+            //查找当前类的 ObjectStreamClass ，它是用于描述一个类的结构信息的，通过它就可以获取对象及其对象属性的相关信息，并且它内部持有该对象的父类的 ObjectStreamClass 实例
             desc = ObjectStreamClass.lookup(cl, true);
             if (!desc.hasWriteReplaceMethod() ||
                 (obj = desc.invokeWriteReplace(obj)) == null ||
@@ -219,6 +220,7 @@ private void writeObject0(Object obj, boolean unshared)
         }
 
         // remaining cases
+        //根据 obj 的类型去执行序列化操作
         if (obj instanceof String) {
             writeString((String) obj, unshared);
         } else if (cl.isArray()) {
@@ -228,6 +230,7 @@ private void writeObject0(Object obj, boolean unshared)
         } else if (obj instanceof Serializable) {
             writeOrdinaryObject(obj, desc, unshared);
         } else {
+            //如果不符合序列化要求，那么会置抛出 NotSerializableException 异常。
             if (extendedDebugInfo) {
                 throw new NotSerializableException(
                     cl.getName() + "\n" + debugInfoStack.toString());
@@ -238,6 +241,81 @@ private void writeObject0(Object obj, boolean unshared)
     } finally {
         depth--;
         bout.setBlockDataMode(oldMode);
+    }
+}
+
+
+
+private void writeOrdinaryObject(Object obj,
+                                    ObjectStreamClass desc,
+                                    boolean unshared)
+    throws IOException
+{
+    if (extendedDebugInfo) {
+        debugInfoStack.push(
+            (depth == 1 ? "root " : "") + "object (class \"" +
+            obj.getClass().getName() + "\", " + obj.toString() + ")");
+    }
+    try {
+        desc.checkSerialize();
+        //写入类的元数据
+        bout.writeByte(TC_OBJECT);
+        //自上而下(从父类写到子类，注意只会遍历那些实现了序列化接口的类)写入描述信息
+        writeClassDesc(desc, false);
+        handles.assign(unshared ? null : obj);
+        //判断需要序列化的对象是否实现了 Externalizable 接口
+        if (desc.isExternalizable() && !desc.isProxy()) {
+            writeExternalData((Externalizable) obj);
+        } else {
+            //writeSerialData 在没有实现 Externalizable 接口时，就执行这个方法
+            writeSerialData(obj, desc);
+        }
+    } finally {
+        if (extendedDebugInfo) {
+            debugInfoStack.pop();
+        }
+    }
+}
+
+
+private void writeSerialData(Object obj, ObjectStreamClass desc)
+    throws IOException
+{
+    //用于返回序列化对象及其父类的 ClassDataSlot[] 数组
+    ObjectStreamClass.ClassDataSlot[] slots = desc.getClassDataLayout();
+    for (int i = 0; i < slots.length; i++) {
+        ObjectStreamClass slotDesc = slots[i].desc;
+        //要序列化这个对象是否有 writeObject 这个 private 方法
+        if (slotDesc.hasWriteObjectMethod()) {
+            PutFieldImpl oldPut = curPut;
+            curPut = null;
+            SerialCallbackContext oldContext = curContext;
+
+            if (extendedDebugInfo) {
+                debugInfoStack.push(
+                    "custom writeObject data (class \"" +
+                    slotDesc.getName() + "\")");
+            }
+            try {
+                curContext = new SerialCallbackContext(obj, slotDesc);
+                bout.setBlockDataMode(true);
+                slotDesc.invokeWriteObject(obj, this);
+                bout.setBlockDataMode(false);
+                bout.writeByte(TC_ENDBLOCKDATA);
+            } finally {
+                curContext.setUsed();
+                curContext = oldContext;
+                if (extendedDebugInfo) {
+                    debugInfoStack.pop();
+                }
+            }
+
+            curPut = oldPut;
+        } else {
+            //VM 自动帮我们序列化了
+            //写入基本数据类型的数据;写入引用数据类型的数据，这里最终又会调用到writeObject0() 方法
+            defaultWriteFields(obj, slotDesc);
+        }
     }
 }
 ```
