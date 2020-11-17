@@ -171,4 +171,5 @@ Writer writer = new OutputStreamWriter(outputStream);
 参考：  
 1.https://chenmingyu.top/nio/  
 2.https://www.zhihu.com/question/32163005/answer/255238636(有趣的理解)  
-3.http://ifeve.com/java-nio-all/
+3.http://ifeve.com/java-nio-all/  
+4.https://www.cnblogs.com/wugongzi/p/12092326.html（比较全的实操栗子）
