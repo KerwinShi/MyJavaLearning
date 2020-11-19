@@ -43,7 +43,7 @@ trace：输出方法调用路径，并输出耗时
 这个指令对于优化代码非常的有用，可以看出具体每个方法执行的时间，如果是for循环等重复语句，还能看出n次循环中的最大耗时，最小耗时，和平均耗时  
 ![trace](../../image/arthas/trace.png)  
 
-### 4.3tt  
+### 4.3[tt](https://arthas.aliyun.com/doc/tt.html)  
 tt：官方名为时空隧道  
 对某方法开启tt后，会记录下每一次的调用（你需要设置最大监控次数），然后你可以在任何时候会看这里面的调用，包括出参，入参，运行耗时，是否异常等  
 ![tt](../../image/arthas/tt.png)  
@@ -60,10 +60,11 @@ thread -n：排列出 CPU 使用率 Top N 的线程。
 thread -b：排查阻塞的线程。（代码有时候设计的不好，会引发死锁的问题，卡住整个线程执行，使用这个指令可以轻松的找到问题线程，以及问题的执行语句）
 
 
-6.ognl表达式  
+6.[ognl表达式](../../杂记/OGNL.md)  
 -  
-
+[参考示例](https://github.com/alibaba/arthas/issues/11)  
 
 参考：  
 1.https://mp.weixin.qq.com/s?__biz=MzU1NTA0NTEwMg==&mid=2247484057&idx=1&sn=84861376e5a231e87c0d1161107e608f&scene=21#wechat_redirect（博客，简化版文档）  
-2.https://arthas.aliyun.com/doc/（官方文档）
+2.https://arthas.aliyun.com/doc/（官方文档）  
+3.https://commons.apache.org/proper/commons-ognl/language-guide.html(OGNL)  
