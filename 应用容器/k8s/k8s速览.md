@@ -48,4 +48,5 @@ API设计原则
 参考：  
 1.https://my.oschina.net/jamesview/blog/2994112（极简的介绍）  
 2.https://blog.csdn.net/maoyeqiu/article/details/79270625 （基本概念的较为详细的介绍）  
-3.https://jimmysong.io/kubernetes-handbook/concepts/（k8s手册）
+3.https://jimmysong.io/kubernetes-handbook/concepts/（k8s手册）  
+4.https://blog.csdn.net/liang_0609/article/details/109462685(可以让儿童看懂的k8s)
