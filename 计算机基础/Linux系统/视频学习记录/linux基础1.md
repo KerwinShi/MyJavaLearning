@@ -31,3 +31,8 @@ yum  （类似于maven）软件的中央仓库,可以安装目标软件及其依
 
 XXXXX.tar.gz  
 解压：`tar -zxvf XXXXX.tar.gz -C 目标路径`
+
+
+安装完操作系统后，就需要安装常用的软件：
+JDK 安装包解压，配置环境变量
+Tomcat 安装包解压，启动Tomcat`./startup.sh`，查看是否已启动`netstat -nltp`
