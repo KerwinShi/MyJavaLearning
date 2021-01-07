@@ -33,6 +33,30 @@ XXXXX.tar.gz
 解压：`tar -zxvf XXXXX.tar.gz -C 目标路径`
 
 
-安装完操作系统后，就需要安装常用的软件：
-JDK 安装包解压，配置环境变量
-Tomcat 安装包解压，启动Tomcat`./startup.sh`，查看是否已启动`netstat -nltp`
+安装完操作系统后，就需要安装常用的软件：  
+JDK 安装包解压，配置环境变量  
+Tomcat 安装包解压，启动Tomcat`./startup.sh`，查看是否已启动`netstat -nltp`  
+
+访问服务器的时候，要注意防火墙，不关闭的时候往往无法访问  
+
+关闭防火墙  
+`systemctl stop firewalld`  
+
+shell文件以.sh结尾
+```
+helloworld.sh
+
+#表示注释
+#!/bin/bash(约定俗成第一句)
+echo "hello world"
+
+```  
+`sh helloworld.sh`执行不需要可执行权限，但是`./`的方式就先要有可执行权限，才能使用（否则，无法被tab发现，补全）  
+语法：  
+`$`引用变量  
+`$A"def"`或者`${A}def`拼接变量与常量  
+`expr $A + $B`运算（注意空格）`C=$((1+2))`  
+`read str`读取输入，保存到str中作为变量  
+
+
+
