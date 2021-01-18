@@ -35,3 +35,12 @@
 3.2可以ping通github，但是无法pull等操作  
 解决办法：  
 修改远程仓库地址，原来使用ssh方式有可能会被公司的相关设置禁止，导致无法正常使用（我自己遇到的就是，之前还好好的用着，再使用的时候就报错`Connection reset by [server_ip] port 22`）,经过排查可以ping通github.com,说明不是host文件的问题（DNS可以解析）；在网上找了n篇博客之后，大部分情况都是ping不通，修改host后可以ping通，然后问题解决；但是，事情永远没有那么简单，我的问题就不是这样，在快绝望之际，看见有人说可能是仓库地址的http与https的关系，于是github上复制https地址，并更新本地项目远程仓库地址，问题解决。  
+
+
+
+3.3以前的项目，在操作系统重装等操作后，vscode提示Git: host key verification failed
+在已克隆好的代码仓库，右键点击“Git Gui here”  
+点击Git Gui工具栏“Remote”，点击“Fetch from > origin”  
+弹出的对话框中输入“yes”，点击“ok”确定操作  
+参考网站：  
+https://www.jianshu.com/p/8ece5a212f10    
