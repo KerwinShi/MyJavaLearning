@@ -36,6 +36,9 @@ alt + f7
 
 快捷键 ctrl + shift + alt + / 选择registry，勾选compiler.automake.allow.when.app.running，设置app运行过程中动态的编译保存的内容  
 
+7. 跳转到指定行  
+ctrl + g   
+
 
 
 

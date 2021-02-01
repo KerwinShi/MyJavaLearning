@@ -72,6 +72,14 @@ ApiImplicitParam：一个请求参数
 ApiImplicitParams：多个请求参数
 ```
 
+@NotNull  
+不能为null，但是可以为空
+@NotEmpty  
+不能weinull，也不可以为空
+@NotBlank  
+只能用于接收String，且字符串trim()之后不可以为0
+
+注：trim()方法去除字符串头尾的空格
 
 参考：  
 1.http://blog.itpub.net/69957347/viewspace-2673042/（基本使用）  
