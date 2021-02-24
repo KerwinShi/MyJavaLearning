@@ -8,6 +8,9 @@
 =   
 
 4.Java 8允许在接口中加入具体方法。  
+=  
+[java接口默认方法与静态方法](./Java8接口.md)  
+
 接口中的具体方法有两种，default方法和static方法，identity()就是Function接口的一个静态方法。  
 Function.identity()：返回一个输出跟输入一样的Lambda表达式对象
 ```java
@@ -21,7 +24,8 @@ Function.identity()：返回一个输出跟输入一样的Lambda表达式对象
     //{love=4, too=3, I=1, you=3}
 ```
 
-
+5.
+=
 
 
 
