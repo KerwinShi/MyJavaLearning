@@ -75,7 +75,7 @@ ApiImplicitParams：多个请求参数
 @NotNull  
 不能为null，但是可以为空
 @NotEmpty  
-不能weinull，也不可以为空
+不能为null，也不可以为空
 @NotBlank  
 只能用于接收String，且字符串trim()之后不可以为0
 
