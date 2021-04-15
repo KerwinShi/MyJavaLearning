@@ -155,7 +155,15 @@ public interface ServletConfig {
 }
 ```
 - RequestDispatcher
-- Filter
+- Filter  
+Filter（过滤器）用于拦截用户请求，在服务器作出响应前，可以在拦截后修改request和response。   
+[Filter详情](./Filter.md)  
+
+[Listener详情](./Listener.md)
+- ServletContextListener  
+- ServletRequestListener  
+
+
 
 #### javax.servlet.http  
 虽然GenricServlet是对Servlet一个很好的加强，but，HttpServlet才是主角。  
@@ -288,7 +296,7 @@ response.setHeader("Content-Type","text/html;charset=utf-8");
 
 - HttpSession  
 - Cookie（类）  
-
+- HttpSessionListener[Listener详情](./Listener.md)
 
 #### javax.servlet.annotation  
 
