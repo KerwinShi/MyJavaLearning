@@ -91,23 +91,28 @@ skip(long m)：调过前m个元素
 一个[例子](https://blog.csdn.net/mark_chao/article/details/80810030)，同时可以观察与map的区别  
 
 3.8anyMatch(T -> boolean)、allMatch(T -> boolean)与noneMatch(T -> boolean)  
+-  
 anyMatch(T -> boolean)： 是否有一个元素匹配给定的 T -> boolean 条件  
 allMatch(T -> boolean)： 是否所有元素都匹配给定的 T -> boolean 条件  
 noneMatch(T -> boolean)：是否没有元素匹配给定的 T -> boolean 条件  
 
 3.9findAny() 和 findFirst()  
+-  
 findAny()：找到其中一个元素  
 findFirst()：找到第一个元素  
 这两的使用上的[区别](https://blog.csdn.net/huanghanqian/article/details/102807972)  
 值得注意的是，这两个方法返回的是一个 Optional<T> 对象，它是一个容器类，能代表一个值存在或不存在  
 
 3.10reduce(T, (T, T) -> T)  
+-  
 用于组合流中的元素，如求和，求积，求最大值等，其中的第一个参数T表示初始值，后面跟一个lambda表达式，初始值可以没有（但是由于没有初始值，需要考虑结果可能不存在的情况，因此返回的是 Optional 类型）  
 
 3.11count()  
+-  
 返回六中元素的个数，结果为long类型  
 
 3.12collect()  
+-  
 收集方法,参数是一个收集器Collector接口  
 ### 3.12.1收集  
 toList,toSet,toCollection,toMap(转map的时候，key重复会报错，需要提供合并策略，具体的见java8 Collectors.toMap方法重载)  
@@ -153,6 +158,7 @@ Map<Boolean, List<Person>> map = list.stream().collect(partitioningBy(p -> p.get
 
 
 3.13forEach()  
+-  
 循环
 
 4.其他操作  
